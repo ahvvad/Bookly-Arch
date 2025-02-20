@@ -1,4 +1,3 @@
-
 import 'package:arch_bookly/core/utils/app_router.dart';
 import 'package:arch_bookly/core/utils/assets.dart';
 import 'package:flutter/cupertino.dart';
