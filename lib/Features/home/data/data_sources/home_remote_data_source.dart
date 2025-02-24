@@ -1,6 +1,8 @@
 import 'package:arch_bookly/Features/home/data/models/book_model/book_model.dart';
+import 'package:arch_bookly/constants.dart';
 import 'package:arch_bookly/core/utils/api_service.dart';
 
+import '../../../../core/utils/functions/save_books.dart';
 import '../../domain/entityes/book_entity.dart';
 
 abstract class HomeRemoteDataSource {
@@ -30,6 +32,8 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
     );
 
     List<BookEntity> books = getBooksList(data);
+    // cashing data
+    saveBooksData(books, kFeatureBox);
     return books;
   }
 
