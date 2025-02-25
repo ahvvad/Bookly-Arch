@@ -16,7 +16,7 @@ class FeaturedBooksListViewBolcBuilder extends StatelessWidget {
         if (state is FeaturedBooksSuccess) {
           return const FeaturedBooksListView();
         } else if (state is FeaturedBooksFailure) {
-          return Text('error: ${state.errorMessage}');
+          return Text('error: ${state.errMessage}');
         } else {
           return const Center(
             child: CircularProgressIndicator(),

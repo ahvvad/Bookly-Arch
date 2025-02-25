@@ -7,7 +7,7 @@ import 'package:arch_bookly/Features/home/data/repos/home_repo_impl.dart';
 import 'package:arch_bookly/Features/home/domain/entityes/book_entity.dart';
 import 'package:arch_bookly/Features/home/domain/use_cases/fetch_featured_books_use_case.dart';
 import 'package:arch_bookly/Features/home/domain/use_cases/fetch_newst_books_use_case.dart';
-import 'package:arch_bookly/Features/home/presentation/manger/cubit/newest_books_cubit.dart';
+import 'package:arch_bookly/Features/home/presentation/manger/newest_books_cubit/newest_books_cubit.dart';
 import 'package:arch_bookly/Features/home/presentation/manger/featured_books_cubit/featured_books_cubit.dart';
 import 'package:arch_bookly/constants.dart';
 import 'package:arch_bookly/core/utils/app_router.dart';
@@ -37,7 +37,7 @@ class Bookly extends StatelessWidget {
               FetchFeaturedBooksUseCase(
                 getIt.get<HomeRepoImpl>(),
               ),
-            );
+            )..fetchFeaturedBooks();
           },
         ),
         BlocProvider(
