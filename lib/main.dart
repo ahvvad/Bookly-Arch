@@ -12,6 +12,7 @@ import 'package:arch_bookly/Features/home/presentation/manger/featured_books_cub
 import 'package:arch_bookly/constants.dart';
 import 'package:arch_bookly/core/utils/app_router.dart';
 import 'package:arch_bookly/core/utils/functions/setup_service_locator.dart';
+import 'package:arch_bookly/core/utils/simple_bloc_observer.dart';
 
 void main() async {
   await Hive.initFlutter();
@@ -19,6 +20,7 @@ void main() async {
   setupServiceLocator();
   await Hive.openBox<BookEntity>(kFeatureBox);
   await Hive.openBox<BookEntity>(kNewestBox);
+  Bloc.observer = SimpleBlocObserver();
   runApp(const Bookly());
 }
 
