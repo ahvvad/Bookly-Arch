@@ -1,17 +1,16 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:arch_bookly/core/use_case/use_case.dart';
+import 'package:arch_bookly/Features/home/domain/entities/book_entity.dart';
+import 'package:arch_bookly/Features/home/domain/repos/home_repo.dart';
+import 'package:arch_bookly/core/errors/failure.dart';
+import 'package:arch_bookly/core/use_cases/use_case.dart';
 import 'package:dartz/dartz.dart';
 
-import '../../../../core/errors/failure.dart';
-import '../entityes/book_entity.dart';
-import '../repos/home_repo.dart';
-
-class FetchFeaturedBooksUseCase extends UseCase<List<BookEntity>, NoParam> {
+class FetchFeaturedBooksUseCase extends UseCase<List<BookEntity>, int> {
   final HomeRepo homeRepo;
+
   FetchFeaturedBooksUseCase(this.homeRepo);
 
   @override
-  Future<Either<Failure, List<BookEntity>>> call([NoParam? param]) async {
-    return await homeRepo.fetchFeaturedBooks();
+  Future<Either<Failure, List<BookEntity>>> call([int param = 0]) async {
+    return homeRepo.fetchFeaturedBooks(pageNumber: param);
   }
 }

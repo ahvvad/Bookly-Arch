@@ -11,7 +11,7 @@ class VolumeInfo {
   String? description;
   List<IndustryIdentifier>? industryIdentifiers;
   ReadingModes? readingModes;
-  num? pageCount;
+  int? pageCount;
   String? printType;
   List<String>? categories;
   num? averageRating;
@@ -53,7 +53,7 @@ class VolumeInfo {
   factory VolumeInfo.fromJson(Map<String, dynamic> json) => VolumeInfo(
         title: json['title'] as String?,
         authors: (json['authors'] as List<dynamic>?)
-            ?.map((authors) => authors.toString())
+            ?.map((author) => author.toString())
             .toList(),
         publisher: json['publisher'] as String?,
         publishedDate: json['publishedDate'] as String?,
@@ -65,10 +65,10 @@ class VolumeInfo {
             ? null
             : ReadingModes.fromJson(
                 json['readingModes'] as Map<String, dynamic>),
-        pageCount: json['pageCount'] as num?,
+        pageCount: json['pageCount'] as int?,
         printType: json['printType'] as String?,
         categories: (json['categories'] as List<dynamic>?)
-            ?.map((categories) => categories.toString())
+            ?.map((category) => category.toString())
             .toList(),
         averageRating: json['averageRating'] as num?,
         ratingsCount: json['ratingsCount'] as num?,

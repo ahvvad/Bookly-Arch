@@ -1,14 +1,15 @@
+import 'package:arch_bookly/features/home/domain/repos/home_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hive_flutter/adapters.dart';
 
 import 'package:arch_bookly/Features/home/data/repos/home_repo_impl.dart';
-import 'package:arch_bookly/Features/home/domain/entityes/book_entity.dart';
+import 'package:arch_bookly/Features/home/domain/entities/book_entity.dart';
 import 'package:arch_bookly/Features/home/domain/use_cases/fetch_featured_books_use_case.dart';
-import 'package:arch_bookly/Features/home/domain/use_cases/fetch_newst_books_use_case.dart';
-import 'package:arch_bookly/Features/home/presentation/manger/newest_books_cubit/newest_books_cubit.dart';
+import 'package:arch_bookly/Features/home/domain/use_cases/fetch_newest_books_use_case.dart';
 import 'package:arch_bookly/Features/home/presentation/manger/featured_books_cubit/featured_books_cubit.dart';
+import 'package:arch_bookly/Features/home/presentation/manger/newset_books_cubit/newest_books_cubit.dart';
 import 'package:arch_bookly/constants.dart';
 import 'package:arch_bookly/core/utils/app_router.dart';
 import 'package:arch_bookly/core/utils/functions/setup_service_locator.dart';
@@ -18,7 +19,7 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(BookEntityAdapter());
   setupServiceLocator();
-  await Hive.openBox<BookEntity>(kFeatureBox);
+  await Hive.openBox<BookEntity>(kFeaturedBox);
   await Hive.openBox<BookEntity>(kNewestBox);
   Bloc.observer = SimpleBlocObserver();
   runApp(const Bookly());
@@ -43,12 +44,12 @@ class Bookly extends StatelessWidget {
         BlocProvider(
           create: (context) {
             return NewestBooksCubit(
-              FetchNewstBooksUseCase(
+              FetchNewestdBooksUseCase(
                 getIt.get<HomeRepoImpl>(),
               ),
-            )..fetchNewestBooks();
+            );
           },
-        ),
+        )
       ],
       child: MaterialApp.router(
         routerConfig: AppRouter.router,

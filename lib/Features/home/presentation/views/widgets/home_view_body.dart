@@ -1,8 +1,6 @@
-import 'package:arch_bookly/Features/home/presentation/views/widgets/newest_books_bloc_builder.dart';
-import 'package:flutter/material.dart';
-
 import 'package:arch_bookly/core/utils/styles.dart';
-
+import 'package:flutter/material.dart';
+import 'best_seller_list_view.dart';
 import 'custom_app_bar.dart';
 import 'featured_books_list_view_bloc_builder.dart';
 
@@ -22,7 +20,7 @@ class HomeViewBody extends StatelessWidget {
                     horizontal: 30,
                   ),
                   child: CustomAppBar()),
-              FeaturedBooksListViewBolcBuilder(),
+              FeatuedBooksListViewBlocBuilder(),
               SizedBox(
                 height: 50,
               ),
@@ -42,11 +40,10 @@ class HomeViewBody extends StatelessWidget {
         SliverFillRemaining(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 30),
-            child: NewestBooksListViewBlocBuilder(),
+            child: BestSellerListView(),
           ),
         ),
       ],
     );
   }
 }
-
